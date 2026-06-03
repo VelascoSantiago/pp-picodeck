@@ -45,7 +45,7 @@ Before running the system, you must register a bot application on Discord to gen
 ## Notes on Deployment & Scalability  
 For the system to function correctly, the host Python script (`discord_bridge.py`) requires the aforementioned Discord Bot Token configured with the **Message Content Intent**. 
 
-On the hardware side, the microcontroller must have the provided code saved exactly as `main.py` to ensure it automatically starts listening to the serial port upon booting. To guarantee long-term reproducibility, the complete circuit schematic is backed up in the included `diagram.json` file, allowing the hardware setup to be scalable and easily rebuilt without depending on external links.
+On the hardware side, the microcontroller must have the provided code saved exactly as `main.py` to ensure it automatically starts listening to the serial port upon booting. To guarantee long-term reproducibility, the complete circuit schematic is backed up in the included `diagram.json` file, allowing the hardware setup to be scalable and easily rebuilt without depending on external links. 
 
 ## Author  
 Santiago Velasco García – *June 2026*
