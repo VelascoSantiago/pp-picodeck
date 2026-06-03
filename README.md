@@ -22,10 +22,28 @@ To achieve this, we built a bidirectional Extract, Transform, Load (ETL) pipelin
 - Interactive vertical scroll animations for reading long messages on the 16x2 LCD  
 
 ## Technologies  
-- Programming Languages: **Python, MicroPython** - Telemetry & API: **psutil, discord.py** - Communication Protocols: **Serial (USB), I2C** - Hardware: **Raspberry Pi Pico (RP2040), 16x2 LCD, Active Buzzer, Push Button, LEDs** - Circuit Simulation: **Wokwi**
+- Programming Languages: **Python, MicroPython**
+- Telemetry & API: **psutil, discord.py**
+- Communication Protocols: **Serial (USB), I2C**
+- Hardware: **Raspberry Pi Pico (RP2040), 16x2 LCD, Active Buzzer, Push Button, LEDs**
+- Circuit Simulation: **Wokwi**
+
+> 🔗 **Interactive Circuit Schematic:** [View hardware diagram on Wokwi](https://wokwi.com/projects/465771827052196865)
+
+## Discord Bot Setup & Authentication
+Before running the system, you must register a bot application on Discord to generate your authorization token:
+
+1. Go to the [Discord Developer Portal](https://discord.com/developers/applications) and log in.
+2. Click **New Application**, give it a name, and accept the terms.
+3. On the left sidebar, navigate to the **Bot** tab.
+4. ⚠️ **CRITICAL:** Scroll down to **Privileged Gateway Intents** and toggle **ON** the **Message Content Intent**. If you skip this, the PicoDeck won't be able to read incoming messages.
+5. Click **Reset Token**, copy the generated string, and paste it into a `.env` file in your project root as `DISCORD_TOKEN=your_token_here`.
+6. To invite the bot to your server, go to **OAuth2 -> URL Generator** on the left menu.
+7. Select the `bot` scope, then under Bot Permissions select `Read Messages/View Channels`. 
+8. Copy the generated URL at the bottom, paste it into your browser, and authorize the bot into your server.
 
 ## Notes on Deployment & Scalability  
-For the system to function correctly, the host Python script (`discord_bridge.py`) requires a valid Discord Bot Token configured with the **Message Content Intent** enabled in the Discord Developer Portal. 
+For the system to function correctly, the host Python script (`discord_bridge.py`) requires the aforementioned Discord Bot Token configured with the **Message Content Intent**. 
 
 On the hardware side, the microcontroller must have the provided code saved exactly as `main.py` to ensure it automatically starts listening to the serial port upon booting. To guarantee long-term reproducibility, the complete circuit schematic is backed up in the included `diagram.json` file, allowing the hardware setup to be scalable and easily rebuilt without depending on external links.
 
